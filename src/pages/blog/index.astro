@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+const posts = await getPosts();
+---
+<BaseLayout title="Blog" description="Long-form notes on machine learning: the intuition, the mathematics, and the connections between papers." section="blog">
+  <header class="page-heading reading-width">
+    <p class="eyebrow">The notebook</p>
+    <h1>Writing</h1>
+    <p class="article-deck">Working through the ideas, one paper at a time.<br />Notes on the intuition, the mathematics, and the connections.</p>
+  </header>
+  <section class="archive" aria-labelledby="archive-title">
+    <div class="section-heading">
+      <h2 id="archive-title" class="eyebrow">All articles</h2>
+      <span class="muted">{posts.length} {posts.length === 1 ? 'article' : 'articles'}</span>
+    </div>
+    <PostList posts={posts} />
+  </section>
+</BaseLayout>

@@ -1,0 +1,42 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../../site.config.mjs';
+import { href } from '../lib/posts';
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description?: string;
+  section?: 'about' | 'blog';
+  articleDate?: Date;
+}
+const { title, description = site.description, section, articleDate } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const pageTitle = `${title} · ${site.author || site.title}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#faf9f6" />
+    {site.author && <meta name="author" content={site.author} />}
+    <title>{pageTitle}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href={href('favicon.svg')} type="image/svg+xml" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:type" content={articleDate ? 'article' : 'website'} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {articleDate && <meta property="article:published_time" content={articleDate.toISOString()} />}
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header section={section} />
+    <main id="main" class="frame" tabindex="-1"><slot /></main>
+    <Footer />
+  </body>
+</html>

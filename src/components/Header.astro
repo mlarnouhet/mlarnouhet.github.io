@@ -1,0 +1,17 @@
+---
+import { site } from '../../site.config.mjs';
+import { href } from '../lib/posts';
+interface Props { section?: 'about' | 'blog' }
+const { section } = Astro.props;
+const links = site.links as { label: string; url: string }[];
+---
+<header class="site-header frame">
+  <a class="wordmark" href={href()}>{site.author || site.title}<span aria-hidden="true">.</span></a>
+  <nav aria-label="Main navigation">
+    <a href={href()} aria-current={section === 'about' ? 'page' : undefined}>About</a>
+    <a href={href('blog/')} aria-current={section === 'blog' ? 'page' : undefined}>Blog</a>
+    {links.filter(link => link.label.toLowerCase() === 'github').map(link => (
+      <a href={link.url}>GitHub <span aria-hidden="true">↗</span></a>
+    ))}
+  </nav>
+</header>

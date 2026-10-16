@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts, href } from '../lib/posts';
+import { site } from '../../site.config.mjs';
+const posts = await getPosts();
+const links = site.links as { label: string; url: string }[];
+---
+<BaseLayout title="About" section="about">
+  <section class="intro reading-width" aria-labelledby="about-title">
+    <p class="eyebrow">A personal notebook on machine learning</p>
+    <h1 id="about-title">{site.headline}</h1>
+    <div class="intro-copy">{site.bio.map(paragraph => <p>{paragraph}</p>)}</div>
+    {links.length > 0 && <ul class="profile-links">{links.map(link => <li><a href={link.url}>{link.label} <span aria-hidden="true">↗</span></a></li>)}</ul>}
+  </section>
+  <section class="interests reading-width" aria-labelledby="interests-title">
+    <h2 id="interests-title" class="eyebrow">Currently exploring</h2>
+    <p>Generative modeling <span aria-hidden="true">·</span> Score matching <span aria-hidden="true">·</span> Stochastic processes</p>
+  </section>
+  <section class="writing-section" aria-labelledby="writing-title">
+    <div class="section-heading">
+      <h2 id="writing-title">Recent writing</h2>
+      <a href={href('blog/')}>All posts <span aria-hidden="true">↗</span></a>
+    </div>
+    <PostList posts={posts.slice(0, 3)} />
+  </section>
+</BaseLayout>

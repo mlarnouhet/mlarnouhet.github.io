@@ -1,0 +1,8 @@
+---
+import { site } from '../../site.config.mjs';
+import { href } from '../lib/posts';
+---
+<footer class="site-footer frame">
+  <span>{site.author || site.title}</span>
+  <a href={href('blog/')}>Keep reading <span aria-hidden="true">↗</span></a>
+</footer>
