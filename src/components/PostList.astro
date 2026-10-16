@@ -11,9 +11,6 @@ const { posts } = Astro.props;
       <div>
         <h3><a href={href(`blog/${post.id}/`)}>{post.data.title}<span aria-hidden="true"> ↗</span></a></h3>
         <p>{post.data.description}</p>
-        <ul class="tags" aria-label="Topics">
-          {post.data.tags.map(tag => <li>{tag}</li>)}
-        </ul>
       </div>
     </li>
   ))}
