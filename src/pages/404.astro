@@ -1,12 +1,13 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { href } from '../lib/posts';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
+
 <BaseLayout title="Page not found">
   <div class="page-heading reading-width">
     <p class="eyebrow">404</p>
-    <h1>A missing page.</h1>
+    <h1>Page not found</h1>
     <p>This page may have moved, or the address may be incomplete.</p>
-    <a href={href('blog/')}>Find something to read <span aria-hidden="true">→</span></a>
+    <a href="/blog/">Find something to read <span aria-hidden="true">→</span></a
+    >
   </div>
 </BaseLayout>

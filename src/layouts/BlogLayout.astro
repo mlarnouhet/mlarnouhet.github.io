@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
-import { formatDate, href } from '../lib/posts';
+import { formatDate } from '../lib/posts';
 import 'katex/dist/katex.min.css';
 interface Props { post: CollectionEntry<'blog'>; headings: MarkdownHeading[] }
 const { post, headings } = Astro.props;
@@ -11,8 +11,8 @@ const contents = headings.filter(heading => heading.depth === 2);
 <BaseLayout title={post.data.title} description={post.data.description} section="blog" articleDate={post.data.date}>
   <article class="article reading-width">
     <header class="article-header" id="top">
-      <a class="back-link" href={href('blog/')}><span aria-hidden="true">←</span> All writing</a>
-      <p class="eyebrow"><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time> <span aria-hidden="true">/</span> Study notes</p>
+      <a class="back-link" href="/blog/"><span aria-hidden="true">←</span> All writing</a>
+      <p class="eyebrow"><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time></p>
       <h1>{post.data.title}</h1>
       <p class="article-deck">{post.data.description}</p>
     </header>
@@ -26,7 +26,7 @@ const contents = headings.filter(heading => heading.depth === 2);
     )}
     <div class="prose"><slot /></div>
     <nav class="article-end" aria-label="Article navigation">
-      <a href={href('blog/')}><span aria-hidden="true">←</span> All writing</a>
+      <a href="/blog/"><span aria-hidden="true">←</span> All writing</a>
       <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </nav>
   </article>

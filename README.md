@@ -28,7 +28,11 @@ The production website is generated in `dist/`. There is no backend or database.
 
 ## Personalize
 
-Edit `site.config.mjs` to set your name, biography, headline, and profile links. The initial biography describes the supplied notes; it does not claim an affiliation or credentials. An empty author name uses “Machine learning notes” as the site title. Adding a GitHub profile also adds it to the top navigation.
+Edit `site.config.mjs` to set your name, biography, headline, and homepage profile links. The initial biography describes the supplied notes; it does not claim an affiliation or credentials. An empty author name uses “Machine learning notes” as the site title.
+
+The Home page includes a photo placeholder to the left of the introduction (above it on small screens). To add your photo, put it in `public/images/` and update `profileImage.src` in `site.config.mjs` to its path, such as `/images/profile.jpg`, along with descriptive `profileImage.alt` text. Photos are cropped to a square.
+
+Replace `public/cv.pdf` with your CV, keeping the same filename. The homepage's CV link opens the PDF in a new tab for inline viewing, without requesting a download. The supplied PDF is a placeholder.
 
 The initial article date is the date this site was prepared, 16 October 2026. Change the `date` in its frontmatter if it should use a different publication date.
 
@@ -41,8 +45,6 @@ Create `src/content/blog/your-post.md`:
 title: "Your article title"
 description: "A short summary for the blog index."
 date: 2026-10-16
-tags: [Machine learning]
-draft: false
 ---
 
 Your article starts here. The template supplies its title, so start sections at `##`.
@@ -54,7 +56,7 @@ $$
 $$
 ```
 
-Fenced code blocks get syntax highlighting. Public images go in `public/images/`; images next to a post can also use relative Markdown paths. Set `draft: true` to exclude a post from the archive and generated routes. Articles with more than two second-level headings get a contents list automatically.
+Fenced code blocks get syntax highlighting. Public images go in `public/images/`; images next to a post can also use relative Markdown paths. All Markdown posts in `src/content/blog/` are included in the website. Articles with more than two second-level headings get a contents list automatically.
 
 Astro 7 uses its official Unified Markdown processor to support the plan's `remark-math` and `rehype-katex` plugins. KaTeX fonts and CSS are bundled locally, and the site uses system fonts.
 

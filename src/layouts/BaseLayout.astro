@@ -1,7 +1,6 @@
 ---
 import Header from '../components/Header.astro';
 import { site } from '../../site.config.mjs';
-import { href } from '../lib/posts';
 import '../styles/global.css';
 interface Props {
   title: string;
@@ -23,7 +22,7 @@ const pageTitle = `${title} · ${site.author || site.title}`;
     {site.author && <meta name="author" content={site.author} />}
     <title>{pageTitle}</title>
     {canonical && <link rel="canonical" href={canonical} />}
-    <link rel="icon" href={href('favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={site.title} />
