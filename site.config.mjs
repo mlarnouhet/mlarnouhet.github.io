@@ -6,8 +6,8 @@ export const site = {
   description: 'Notes, intuitions, and derivations on machine learning, with a focus on diffusion models.',
   headline: 'Home',
   profileImage: {
-    src: '/images/profile-placeholder.svg',
-    alt: 'Profile photo placeholder',
+    src: '/images/2023_3EA_LARNOUHET_Matthieu.jpg',
+    alt: 'Portrait of Matthieu Larnouhet',
   },
   bio: [
     'I use this space to work through machine learning papers and make sense of the ideas behind them. Writing out the details helps me connect the intuition to the mathematics.',

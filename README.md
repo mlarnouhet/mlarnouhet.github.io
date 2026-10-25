@@ -30,7 +30,7 @@ The production website is generated in `dist/`. There is no backend or database.
 
 Edit `site.config.mjs` to set your name, biography, headline, and homepage profile links. The initial biography describes the supplied notes; it does not claim an affiliation or credentials. An empty author name uses “Machine learning notes” as the site title.
 
-The Home page includes a photo placeholder to the left of the introduction (above it on small screens). To add your photo, put it in `public/images/` and update `profileImage.src` in `site.config.mjs` to its path, such as `/images/profile.jpg`, along with descriptive `profileImage.alt` text. Photos are cropped to a square.
+The Home page includes a profile photo to the left of the introduction (above it on small screens). To change your photo, put it in `public/images/` and update `profileImage.src` in `site.config.mjs` to its path, such as `/images/profile.jpg`, along with descriptive `profileImage.alt` text. Photos are cropped to a square.
 
 Replace `public/cv.pdf` with your CV, keeping the same filename. The homepage's CV link opens the PDF in a new tab for inline viewing, without requesting a download. The supplied PDF is a placeholder.
 
