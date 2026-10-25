@@ -10,8 +10,9 @@ export const site = {
     alt: 'Portrait of Matthieu Larnouhet',
   },
   bio: [
-    'I use this space to work through machine learning papers and make sense of the ideas behind them. Writing out the details helps me connect the intuition to the mathematics.',
-    'My current notes explore diffusion models: how we learn to reverse noise, and how different approaches fit into a common framework.'
+    'Hi, My name is Matthieu Larnouhet.',
+    'Welcome to my personal website, where i share my background, interests and personal projects. I am a French machine learning engineer with interests in natural language processing, computer vision, generative modeling and world models. I also use this website to write blogs which i use to document what i learn and share my insights on technical topics.',
+    "Feel free to explore and don't hesitate to get in touch !.",
   ],
   // Example: { label: 'GitHub', url: 'https://github.com/your-username' }
   links: [
