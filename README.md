@@ -32,7 +32,7 @@ Edit `site.config.mjs` to set your name, biography, headline, and homepage profi
 
 The Home page includes a profile photo to the left of the introduction (above it on small screens). To change your photo, put it in `public/images/` and update `profileImage.src` in `site.config.mjs` to its path, such as `/images/profile.jpg`, along with descriptive `profileImage.alt` text. Photos are cropped to a square.
 
-Replace `public/cv.pdf` with your CV, keeping the same filename. The homepage's CV link opens the PDF in a new tab for inline viewing, without requesting a download. The supplied PDF is a placeholder.
+Replace `public/CV.pdf` with your CV, keeping the same filename and capitalization. The homepage's CV link opens the PDF in a new tab for inline viewing, without requesting a download.
 
 The initial article date is the date this site was prepared, 16 October 2026. Change the `date` in its frontmatter if it should use a different publication date.
 
