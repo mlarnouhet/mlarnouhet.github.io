@@ -919,7 +919,7 @@ F_\theta\bigl(c_{\mathrm{in}}(\sigma)x,c_{\mathrm{noise}}(\sigma)\bigr)
 \tag{28}
 $$
 
-Here $c_{\mathrm{skip}}(\sigma)x$ is a skip connection and $F_\theta$ is the neural network. It takes as input $x$ multiplied by the scale $c_{\mathrm{in}}(\sigma)$, which sets its variance to $1$. $c_{\mathrm{out}}(\sigma)$ and $c_{\mathrm{skip}}(\sigma)$ are chosen so that the training targets have unit variance and $c_{\mathrm{out}}(\sigma)$ is minimized, so that errors are amplified as little as possible. 
+Here $c_{\mathrm{skip}}(\sigma)x$ is a skip connection and $F_\theta$ is the neural network. It takes as input $x$ multiplied by the scale $c_{\mathrm{in}}(\sigma)$, which sets its variance to $1$. $c_{\mathrm{out}}(\sigma)$ and $c_{\mathrm{skip}}(\sigma)$ are chosen so that the training target has unit variance and $c_{\mathrm{out}}(\sigma)$ is minimized, so that errors are amplified as little as possible. 
 
 The skip connection behaves in different ways depending on the input noise level.
 
