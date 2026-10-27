@@ -741,7 +741,7 @@ To establish the connection to the VE-ODE, we can first consider the fact that $
 
 $$
 d\bar{x}(t)
-=-\frac12\frac{d\sigma(t)^2}{dt}\,\nabla_{\bar{x}}\log q_t(\bar{x})\,dt
+=-\frac12\frac{d[\sigma(t)^2]}{dt}\,\nabla_{\bar{x}}\log q_t(\bar{x})\,dt
 =-\sigma(t)\,\nabla_{\bar{x}}\log q_t(\bar{x})\,d\sigma(t)
 $$
 
@@ -754,7 +754,7 @@ $$
 \right)
 $$
 
-Substituting this relation into the VE ODE gives exactly the DDIM ODE above.
+Substituting this relation into the VE-ODE gives exactly the DDIM ODE above.
 
 ## 5. EDM
 
