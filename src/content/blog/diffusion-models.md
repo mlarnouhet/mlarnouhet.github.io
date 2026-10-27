@@ -14,7 +14,7 @@ I will start by presenting the two successful classes of diffusion-based generat
 
 ## 1. Score Matching
 
-### 2.1. Learning a density gradient
+### 1.1. Learning a density gradient
 
 Both DDPM and NCSN, as well as the SDE and EDM frameworks, make use of score matching [\[6\]](#ref-score-matching "Aapo Hyvärinen (2005), Estimation of Non-Normalized Statistical Models by Score Matching") to learn a time-dependent score of the perturbed data distribution.
 
@@ -59,11 +59,11 @@ This initial formulation of score matching is unfortunately not scalable because
 
 This is why the diffusion methods we are going to discuss instead focus on another approach, denoising score matching [\[7\]](#ref-denoising-score-matching "Pascal Vincent (2011), A Connection Between Score Matching and Denoising Autoencoders").
 
-### 2.2. Denoising score matching
+### 1.2. Denoising score matching
 
 Instead of directly learning the score of the data distribution, we perturb the initial data distribution with noise and then attempt to learn the score of that perturbed distribution.
 
-Let $x\sim p_{\mathrm{data}}(x)$, $\tilde x$ the perturbed data point, $\sigma>0$, and define the perturbation kernel:
+Let $x\sim p_{\mathrm{data}}(x)$, $\tilde x$ be the perturbed data point, $\sigma>0$, and define the perturbation kernel:
 
 $$
 q_\sigma(\tilde x\mid x)=\mathcal{N}(\tilde x;x,\sigma^2 I)
@@ -111,7 +111,7 @@ S_{\theta^*}(\tilde x)=\nabla_{\tilde x}\log q_\sigma(\tilde x)
 $$
 
 
-We first establish the following property of squared-error regression: Let $X$ and $Y$ random variables, minimizing $\mathbb{E}[\|f(X)-Y\|_2^2]$ yields the optimal predictor $f^*(X)=\mathbb{E}[Y\mid X]$.
+We first establish the following property of squared-error regression: Let $X$ and $Y$ be random variables. Minimizing $\mathbb{E}[\|f(X)-Y\|_2^2]$ yields the optimal predictor $f^*(X)=\mathbb{E}[Y\mid X]$.
 
 Let $m(X)=\mathbb{E}[Y\mid X]$. Expanding the squared L2 norm,
 
@@ -275,7 +275,7 @@ This is done for $i=N,\ldots,1$, starting at $x_N^0\sim\mathcal{N}(0,\sigma_{\ma
 
 The framework presented by Song et al. in *Score-Based Generative Modeling through Stochastic Differential Equations* [\[4\]](#ref-sde) uses stochastic differential equations to transform a data distribution into a simpler distribution by slowly adding noise. The SDE can also be reversed to transform the simple prior distribution back into the original data distribution by slowly removing the noise.
 
-The reverse SDE uses a time-dependent score, which can be learned to then numerically integrate the reverse equation and sample from the data distribution (See [Figure 1](#fig-sde-framework)).
+The reverse SDE uses a time-dependent score, which can be learned to then numerically integrate the reverse equation and sample from the data distribution (see [Figure 1](#fig-sde-framework)).
 
 Song et al. show that both DDPM and NCSN can be expressed inside this framework. We will first present the framework in more detail and then explain how DDPM and NCSN fit within it.
 
@@ -303,7 +303,7 @@ $$
 dx=\bigl[f(x,t)-g(t)^2\nabla_x\log p_t(x)\bigr]\,d\bar t+g(t)\,d\bar w_t\tag{15}
 $$
 
-Here $d\bar w_t$ denotes the Wiener process when time flows backward and $d\bar t$ is an infinitesimal negative timestep. We can also see that this reverse SDE uses the score of the time dependant perturbed distribution $p_t(x)$.
+Here $d\bar w_t$ denotes the Wiener process when time flows backward and $d\bar t$ is an infinitesimal negative timestep. We can also see that this reverse SDE uses the score of the time-dependant perturbed distribution $p_t(x)$.
 
 We can use the reverse SDE to sample from $p_{\mathrm{data}}$ by solving it numerically. First we need to train a neural network to estimate the time-dependent score $\nabla_x\log p_t(x)$. We can do this using denoising score matching:
 
@@ -461,7 +461,7 @@ $$
 
 where $z_{i+1}\sim\mathcal N(0,I)$ are independent standard Gaussian vectors. For this discrete update, we absorb the step size $\Delta t_i=t_{i+1}-t_i>0$ into the coefficients using $f(t_{i+1})\leftarrow f(t_{i+1})\Delta t_i$ and $g(t_{i+1})\leftarrow g(t_{i+1})\sqrt{\Delta t_i}$.
 
-The numerical solver used to solve the SDE is what Song et al. call the predictor part of their sampling algorithm. This predictor is combined with a corrector, in the form of annealed Langevin dynamics, which helps improve the sample distribution that was just updated by the predictor. See [Figure 2](#fig-predictor-corrector) for the full PC smapling schemes of both VE-SDE and VP-SDE.
+The numerical solver used to solve the SDE is what Song et al. call the predictor part of their sampling algorithm. This predictor is combined with a corrector, in the form of annealed Langevin dynamics, which helps improve the sample distribution that was just updated by the predictor. See [Figure 2](#fig-predictor-corrector) for the full PC sampling schemes of both VE-SDE and VP-SDE.
 
 <figure id="fig-predictor-corrector">
   <img src="/images/pc.png" alt="VE-SDE and VP-SDE predictor–corrector sampling algorithms, with predictor steps highlighted in blue and Langevin corrector steps in orange." loading="lazy" />
@@ -516,7 +516,7 @@ dx=\sqrt{d[\sigma(t)^2]}\,z(t)
 =\sqrt{\frac{d[\sigma(t)^2]}{dt}}\,\sqrt{dt}\,z(t)
 $$
 
-Brownian motion satisfies $dw_t\sim\mathcal N(0,dt\,I)$, since $\sqrt{dt}\,z(t)\sim\mathcal N(0,dt\,I)$, we obtain the following SDE:
+Brownian motion satisfies $dw_t\sim\mathcal N(0,dt\,I)$. Since $\sqrt{dt}\,z(t)\sim\mathcal N(0,dt\,I)$, we obtain the following SDE:
 
 $$
 dx=\sqrt{\frac{d[\sigma(t)^2]}{dt}}\,dw_t
@@ -654,7 +654,7 @@ $$
 \bar\alpha_i=\prod_{j=1}^{i}(1-\beta_j)
 $$
 
-Since $\beta_i$ is of order of $10^{-4}$ to $10^{-1}$, we can write, approximately:
+Since $\beta_i$ is on the order of $10^{-4}$ to $10^{-1}$, we can write, approximately:
 
 $$
 \begin{aligned}
@@ -676,7 +676,7 @@ $$
 =\alpha(t)
 $$
 
-This means that the DDPM's perturbation kernel matches the one induced by the SDE framework.
+This means that the DDPM perturbation kernel matches the one induced by the SDE framework.
 
 The objective function is the same as previously, with $\lambda(t)\propto 1-\alpha(t)$.
 
@@ -737,7 +737,7 @@ d\bar{x}(t)
 \right)d\sigma(t)
 $$
 
-To establish the connection to the VE-ODE, we can first consider the fact that $\bar{x}(t)\mid\bar{x}(0) = \bar{x}(0)+\sigma(t)\varepsilon\sim\mathcal N(\bar{x}(0),\sigma(t)^2I)$. This transition kernel corresponds to the variance exploding schedule, for which we know the ODE. Let $q_t$ be the marginal probability density of $\bar{x}(t)$, the VE probability-flow ODE is:
+To establish the connection to the VE-ODE, we can first consider the fact that $\bar{x}(t)\mid\bar{x}(0) = \bar{x}(0)+\sigma(t)\varepsilon\sim\mathcal N(\bar{x}(0),\sigma(t)^2I)$. This transition kernel corresponds to the variance-exploding schedule, for which we know the ODE. Let $q_t$ be the marginal probability density of $\bar{x}(t)$, the VE probability-flow ODE is:
 
 $$
 d\bar{x}(t)
@@ -923,7 +923,7 @@ Here $c_{\mathrm{skip}}(\sigma)x$ is a skip connection and $F_\theta$ is the neu
 
 The skip connection behaves in different ways depending on the input noise level.
 
-At low noise levels, it is a good idea to predict the noise added to the input (or rather its opposite). That predicted noise is then scaled back down by $c_{\mathrm{out}}(\sigma)$, reducing errors made by the network, and subtracted from the noised image coming from the skip connection, for which $c_{\mathrm{skip}}(\sigma)\approx1$, to yield the final predicted image.
+At low noise levels, it is a good idea to predict the noise added to the input (or rather its opposite). That predicted noise is then scaled back down by $c_{\mathrm{out}}(\sigma)$, reducing errors made by the network, and added to the noised image coming from the skip connection, for which $c_{\mathrm{skip}}(\sigma)\approx1$, to yield the final predicted image.
 
 At high noise levels, predicting the noise is a bad idea because whatever error the network makes would be amplified by $c_{\mathrm{out}}(\sigma)$. Instead, we directly predict the final image and deactivate the skip connection by setting $c_{\mathrm{skip}}(\sigma)\approx0$.
 
@@ -945,7 +945,7 @@ $$
 
 ## 6. Closing thoughts
 
-I did my best to summarize how diffusion frameworks have evolved over time without leaving out too many important details. I omitted some topics, such as deriving the SDE from the heat equation PDE and the Fokker-Planck equation as i deemed this part too theoretical and wanted to stay close to the practical application of diffusion models.
+I did my best to summarize how diffusion frameworks have evolved over time without leaving out too many important details. I omitted some topics, such as deriving the SDE from the heat equation PDE and the Fokker-Planck equation as I deemed this part too theoretical and wanted to stay close to the practical application of diffusion models.
 
 I also intend to write a follow-up post on flow matching techniques, which are closely related to diffusion models, particularly their ODE formulation.
 
