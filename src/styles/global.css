@@ -37,8 +37,7 @@ ul, ol { padding-left: 1.4em; }
 .site-header nav a:hover, .site-header nav a[aria-current] { color: var(--ink); }
 .site-header nav a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 9px; }
 .eyebrow { font-family: var(--sans); font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .15em; color: var(--muted); line-height: 1.6; margin: 0 0 22px; }
-.intro { display: grid; grid-template-columns: 160px minmax(0, 1fr); align-items: start; gap: 36px; padding-top: 85px; }
-.profile-photo { display: block; width: 160px; max-width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--line); border-radius: 8px; background: #eeeee7; }
+.intro { padding-top: 85px; }
 .intro-content { min-width: 0; }
 .intro h1 { max-width: 610px; }
 .intro-copy { max-width: 630px; font-size: 1.065rem; }
@@ -111,8 +110,7 @@ ul, ol { padding-left: 1.4em; }
   .site-header { padding-block: 23px 20px; gap: 15px; flex-wrap: wrap; }
   .wordmark { font-size: 1.05rem; }
   .site-header nav { gap: 19px; font-size: .8rem; }
-  .intro { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 58px; }
-  .profile-photo { width: 128px; }
+  .intro { padding-top: 58px; }
   .intro h1 { max-width: 440px; }
   .intro-copy { font-size: 1rem; }
   .eyebrow { font-size: .61rem; }

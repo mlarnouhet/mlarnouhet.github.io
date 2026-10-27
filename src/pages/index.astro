@@ -9,14 +9,6 @@ const links = site.links as { label: string; url: string; newTab?: boolean }[];
 
 <BaseLayout title="About" section="about">
   <section class="intro" aria-labelledby="about-title">
-    <img
-      class="profile-photo"
-      src={`${import.meta.env.BASE_URL.replace(/\/$/, "")}${site.profileImage.src}`}
-      alt={site.profileImage.alt}
-      width="160"
-      height="160"
-      decoding="async"
-    />
     <div class="intro-content">
       <h1 id="about-title">{site.headline}</h1>
       <div class="intro-copy">
