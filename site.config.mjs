@@ -3,7 +3,7 @@ export const site = {
   title: "Matthieu's blog",
   author: '',
   url: 'https://machine-learning-notes-mlarn.bloomybrush4.chatgpt.site',
-  description: 'Notes, intuitions, and derivations on machine learning, with a focus on diffusion models.',
+  description: 'Posts on machine learning.',
   headline: 'Home',
   profileImage: {
     src: '/images/2023_3EA_LARNOUHET_Matthieu.jpg',
